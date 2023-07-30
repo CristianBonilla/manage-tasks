@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  managetasks.api:
+    image: ${DOCKER_REGISTRY-}managetasksapi
+    container_name: 'manage-tasks-API'
+    build:
+      context: .
+      dockerfile: ManageTasks.API/Dockerfile
+    depends_on:
+      - sqlserver
+    links:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: 'sql-server'
+    hostname: 'sql-server'
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_PID: 'Express'
+      MSSQL_USER: 'sa'
+      MSSQL_SA_PASSWORD: 'ManageTasks__Password'
+    ports:
+      - '1433:1433'
+    expose:
+      - 1433

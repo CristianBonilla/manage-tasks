@@ -11,6 +11,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ManageTasks.API/ManageTasks.API.csproj", "ManageTasks.API/"]
+COPY ["ManageTasks.Contracts/ManageTasks.Contracts.csproj", "ManageTasks.Contracts/"]
+COPY ["ManageTasks.Domain.Entities/ManageTasks.Domain.Entities.csproj", "ManageTasks.Domain.Entities/"]
+COPY ["ManageTasks.Domain/ManageTasks.Domain.csproj", "ManageTasks.Domain/"]
+COPY ["ManageTasks.Infrastructure/ManageTasks.Infrastructure.csproj", "ManageTasks.Infrastructure/"]
 RUN dotnet restore "ManageTasks.API/ManageTasks.API.csproj"
 COPY . .
 WORKDIR "/src/ManageTasks.API"

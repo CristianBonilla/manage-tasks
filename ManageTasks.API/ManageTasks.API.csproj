@@ -5,7 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>d0d420cb-7e3a-4921-b205-f470a0c24d7f</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,7 +37,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="App_Data\" />
   </ItemGroup>
 
   <ItemGroup>

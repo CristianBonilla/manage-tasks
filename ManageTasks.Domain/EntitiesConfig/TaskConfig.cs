@@ -19,6 +19,10 @@ namespace ManageTasks.Domain.EntitiesConfig
         .IsRequired();
       builder.Property(property => property.Status)
         .IsRequired();
+      builder.Property(property => property.Created)
+        .HasDefaultValueSql("GETUTCDATE()");
+      builder.Property(property => property.Version)
+        .IsRowVersion();
       builder.HasData(SeedData.Tasks);
     }
   }

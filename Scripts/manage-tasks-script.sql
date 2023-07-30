@@ -11,19 +11,20 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730061903_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730204119_InitialCreate')
 BEGIN
     CREATE TABLE [dbo].[Task] (
         [TaskId] uniqueidentifier NOT NULL DEFAULT (NEWID()),
         [TaskAction] nvarchar(50) NOT NULL,
         [Status] int NOT NULL,
-        [Created] datetimeoffset NOT NULL,
+        [Created] datetimeoffset NOT NULL DEFAULT (GETUTCDATE()),
+        [Version] rowversion NOT NULL,
         CONSTRAINT [PK_Task] PRIMARY KEY ([TaskId])
     );
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730061903_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730204119_InitialCreate')
 BEGIN
     IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'TaskId', N'Created', N'Status', N'TaskAction') AND [object_id] = OBJECT_ID(N'[dbo].[Task]'))
         SET IDENTITY_INSERT [dbo].[Task] ON;
@@ -38,10 +39,10 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730061903_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20230730204119_InitialCreate')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20230730061903_InitialCreate', N'7.0.9');
+    VALUES (N'20230730204119_InitialCreate', N'7.0.9');
 END;
 GO
 

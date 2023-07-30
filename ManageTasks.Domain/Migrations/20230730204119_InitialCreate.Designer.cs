@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageTasks.Domain.Migrations
 {
     [DbContext(typeof(ManageTasksContext))]
-    [Migration("20230730061903_InitialCreate")]
+    [Migration("20230730204119_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,7 +33,9 @@ namespace ManageTasks.Domain.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -43,6 +45,12 @@ namespace ManageTasks.Domain.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("TaskId");
 
