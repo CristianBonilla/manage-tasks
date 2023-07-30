@@ -3,7 +3,7 @@ using ManageTasks.API.Options;
 
 namespace ManageTasks.API
 {
-  public class Startup
+  class Startup
   {
     readonly IConfiguration _configuration;
     readonly IWebHostEnvironment _env;

@@ -3,7 +3,7 @@ using ManageTasks.Domain.Context;
 
 namespace ManageTasks.API.Installers
 {
-  public class DbInstaller : IInstaller
+  class DbInstaller : IInstaller
   {
     public void InstallServices(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
     {

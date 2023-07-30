@@ -5,7 +5,7 @@ using ManageTasks.Contracts.Services;
 
 namespace ManageTasks.API.Filters
 {
-  public class ServiceErrorExceptionFilter : IActionFilter, IOrderedFilter
+  class ServiceErrorExceptionFilter : IActionFilter, IOrderedFilter
   {
     public int Order => int.MaxValue - 10;
 

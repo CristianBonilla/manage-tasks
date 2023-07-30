@@ -2,7 +2,7 @@ using ManageTasks.API.Options;
 
 namespace ManageTasks.API.Installers
 {
-  public class SwaggerInstaller : IInstaller
+  class SwaggerInstaller : IInstaller
   {
     public void InstallServices(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
     {

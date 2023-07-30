@@ -6,7 +6,7 @@ using ManageTasks.API.Filters;
 
 namespace ManageTasks.API.Installers
 {
-  public class CommonInstaller : IInstaller
+  class CommonInstaller : IInstaller
   {
     public void InstallServices(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
     {
