@@ -1,35 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+using Autofac.Extensions.DependencyInjection;
+using ManageTasks.Domain.Context;
+
 namespace ManageTasks.API
 {
   public class Program
   {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
-      var builder = WebApplication.CreateBuilder(args);
+      IHost host = CreateHostBuilder(args).Build();
+      await DbMigrationStart<ManageTasksContext>(host);
+      await host.RunAsync();
+    }
 
-      // Add services to the container.
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+      Host.CreateDefaultBuilder(args)
+          .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+          .ConfigureWebHostDefaults(webBuilder =>
+          {
+            webBuilder.UseStartup<Startup>();
+          });
 
-      builder.Services.AddControllers();
-      // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-      builder.Services.AddEndpointsApiExplorer();
-      builder.Services.AddSwaggerGen();
-
-      var app = builder.Build();
-
-      // Configure the HTTP request pipeline.
-      if (app.Environment.IsDevelopment())
-      {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-      }
-
-      app.UseHttpsRedirection();
-
-      app.UseAuthorization();
-
-
-      app.MapControllers();
-
-      app.Run();
+    private static async Task DbMigrationStart<TContext>(IHost host) where TContext : DbContext
+    {
+      using IServiceScope serviceScope = host.Services.CreateScope();
+      TContext dbContext = serviceScope.ServiceProvider.GetRequiredService<TContext>();
+      await dbContext.Database.MigrateAsync();
     }
   }
 }
