@@ -18,4 +18,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ManageTasks.Contracts\ManageTasks.Contracts.csproj" />
+    <ProjectReference Include="..\ManageTasks.Domain.Entities\ManageTasks.Domain.Entities.csproj" />
+    <ProjectReference Include="..\ManageTasks.Domain\ManageTasks.Domain.csproj" />
+    <ProjectReference Include="..\ManageTasks.Infrastructure\ManageTasks.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
