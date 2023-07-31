@@ -1,3 +1,5 @@
+using ManageTasks.Domain.Entities;
+
 namespace ManageTasks.Contracts.DTO.Task
 {
   public class TaskResponse

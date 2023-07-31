@@ -1,4 +1,4 @@
-namespace ManageTasks.Contracts.DTO
+namespace ManageTasks.Domain.Entities
 {
   public enum TaskProgressStatus
   {

@@ -1,4 +1,3 @@
-using ManageTasks.Contracts.DTO;
 using ManageTasks.Domain.Entities;
 
 namespace ManageTasks.Domain.SeedWork.Collections

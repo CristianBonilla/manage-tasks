@@ -1,5 +1,3 @@
-using ManageTasks.Contracts.DTO;
-
 namespace ManageTasks.Domain.Entities
 {
   public class TaskEntity
