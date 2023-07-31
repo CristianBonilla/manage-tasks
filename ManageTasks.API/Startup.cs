@@ -1,4 +1,6 @@
+using Autofac;
 using ManageTasks.API.Extensions;
+using ManageTasks.API.Modules;
 using ManageTasks.API.Options;
 
 namespace ManageTasks.API
@@ -18,6 +20,12 @@ namespace ManageTasks.API
     public void ConfigureServices(IServiceCollection services)
     {
       services.InstallServicesFromAssembly(_configuration, _env);
+    }
+
+    // Register your own things directly with Autofac here.
+    public static void ConfigureContainer(ContainerBuilder builder)
+    {
+      builder.RegisterModule<DomainModule>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
