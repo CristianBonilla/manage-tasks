@@ -1,3 +1,4 @@
+using ManageTasks.API.Filters;
 using ManageTasks.API.Options;
 
 namespace ManageTasks.API.Installers
@@ -18,6 +19,7 @@ namespace ManageTasks.API.Installers
           Description = "Backend project with an API to manage tasks",
           Contact = swagger.Contact
         });
+        options.SchemaFilter<EnumSchemaFilter>();
       });
     }
   }
