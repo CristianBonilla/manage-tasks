@@ -28,18 +28,10 @@ namespace ManageTasks.Domain.Services
       return addedTask;
     }
 
-    public async Task<TaskEntity> UpdateTaskByAction(Guid taskId, string taskAction)
+    public async Task<TaskEntity> UpdateTask(Guid taskId, string taskAction, TaskProgressStatus taskProgressStatus)
     {
       TaskEntity task = GetTask(taskId);
-      task.TaskAction = taskAction;
-      await _context.SaveAsync();
-
-      return task;
-    }
-
-    public async Task<TaskEntity> UpdateTaskByStatus(Guid taskId, TaskProgressStatus taskProgressStatus)
-    {
-      TaskEntity task = GetTask(taskId);
+      task.Action = taskAction;
       task.Status = taskProgressStatus;
       await _context.SaveAsync();
 

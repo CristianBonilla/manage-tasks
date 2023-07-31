@@ -1,7 +1,9 @@
 using Autofac;
 using ManageTasks.Contracts.Repository;
+using ManageTasks.Contracts.Services;
 using ManageTasks.Domain.Context;
 using ManageTasks.Domain.Repositories;
+using ManageTasks.Domain.Services;
 using ManageTasks.Infrastructure.Repository;
 
 namespace ManageTasks.API.Modules
@@ -23,6 +25,10 @@ namespace ManageTasks.API.Modules
 
       builder.RegisterType<TaskRepository>()
         .As<ITaskRepository>()
+        .InstancePerLifetimeScope();
+
+      builder.RegisterType<TaskService>()
+        .As<ITaskService>()
         .InstancePerLifetimeScope();
     }
   }

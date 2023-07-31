@@ -36,10 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ManageTasks.Contracts\ManageTasks.Contracts.csproj" />
     <ProjectReference Include="..\ManageTasks.Domain.Entities\ManageTasks.Domain.Entities.csproj" />
     <ProjectReference Include="..\ManageTasks.Domain\ManageTasks.Domain.csproj" />

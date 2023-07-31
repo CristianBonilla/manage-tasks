@@ -13,7 +13,7 @@ namespace ManageTasks.Domain.EntitiesConfig
         .HasKey(key => key.TaskId);
       builder.Property(property => property.TaskId)
         .HasDefaultValueSql("NEWID()");
-      builder.Property(property => property.TaskAction)
+      builder.Property(property => property.Action)
         .HasMaxLength(50)
         .IsUnicode()
         .IsRequired();
