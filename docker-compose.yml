@@ -7,6 +7,7 @@ services:
     build:
       context: .
       dockerfile: ManageTasks.API/Dockerfile
+      target: managetasks.api
     depends_on:
       - sqlserver
     links:
@@ -14,8 +15,8 @@ services:
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: 'sql-server'
-    hostname: 'sql-server'
+    container_name: 'manage-tasks-DB'
+    hostname: 'manage-tasks-DB'
     environment:
       ACCEPT_EULA: 'Y'
       MSSQL_PID: 'Express'
