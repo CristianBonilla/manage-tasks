@@ -6,7 +6,7 @@
     <ProjectGuid>6fb61eff-9781-45a4-9805-b2fbed4b859d</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>managetasks.api</DockerServiceName>
+    <DockerServiceName>manage-tasks-api</DockerServiceName>
     <DockerComposeProjectName>manage-tasks-backend</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>

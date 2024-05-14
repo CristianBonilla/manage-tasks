@@ -18,7 +18,7 @@ COPY ["ManageTasks.Domain.Entities/ManageTasks.Domain.Entities.csproj", "ManageT
 COPY ["ManageTasks.Domain/ManageTasks.Domain.csproj", "ManageTasks.Domain/"]
 COPY ["ManageTasks.Infrastructure/ManageTasks.Infrastructure.csproj", "ManageTasks.Infrastructure/"]
 
-COPY ["ManageTasks.Tests/ManageTasks.Tests.csproj" "ManageTasks.Tests/"]
+COPY ["ManageTasks.Tests/ManageTasks.Tests.csproj", "ManageTasks.Tests/"]
 
 RUN dotnet restore "./ManageTasks.API/ManageTasks.API.csproj"
 COPY . .

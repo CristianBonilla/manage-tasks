@@ -9,6 +9,7 @@ namespace ManageTasks.API.Installers
     {
       string connectionString = configuration.GetConnectionString(CommonValues.ManageTasksConnection)!;
       services.AddDbContextPool<ManageTasksContext>(options => options.UseSqlServer(connectionString));
+      //services.AddSqlServer<ManageTasksContext>(connectionString);
     }
   }
 }

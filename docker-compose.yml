@@ -1,28 +1,34 @@
 version: '3.9'
 
+networks:
+  manage-tasks-network:
+
 services:
-  managetasks.api:
+  manage-tasks-api:
     image: ${DOCKER_REGISTRY-}managetasksapi
-    container_name: 'manage-tasks-API'
+    container_name: manage-tasks-API
     build:
       context: .
       dockerfile: ManageTasks.API/Dockerfile
-      target: managetasks.api
     depends_on:
-      - sqlserver
+      - manage-tasks-db
     links:
-      - sqlserver
+      - manage-tasks-db
+    networks:
+      - manage-tasks-network
 
-  sqlserver:
+  manage-tasks-db:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: 'manage-tasks-DB'
-    hostname: 'manage-tasks-DB'
+    container_name: manage-tasks-DB
+    hostname: sql-server
     environment:
-      ACCEPT_EULA: 'Y'
-      MSSQL_PID: 'Express'
-      MSSQL_USER: 'sa'
-      MSSQL_SA_PASSWORD: 'ManageTasks__Password'
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - MSSQL_USER=sa
+      - MSSQL_SA_PASSWORD=ManageTasks__Password
     ports:
-      - '1433:1433'
+      - 8077:1433
     expose:
-      - 1433
+      - 8077
+    networks:
+      - manage-tasks-network
