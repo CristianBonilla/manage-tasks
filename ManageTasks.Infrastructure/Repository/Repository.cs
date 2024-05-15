@@ -79,7 +79,7 @@ namespace ManageTasks.Infrastructure.Repository
 
     public bool Exists(Expression<Func<TEntity, bool>> predicate) => _entitySet.Any(predicate);
 
-    public IEnumerable<TEntity> Get(params Expression<Func<TEntity, bool>>[] includes)
+    public IEnumerable<TEntity> Get(params Expression<Func<TEntity, object>>[] includes)
     {
       if (!includes.Any())
         return _entitySet.ToList();

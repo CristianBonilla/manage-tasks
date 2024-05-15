@@ -16,7 +16,7 @@ namespace ManageTasks.Contracts.Repository
     TEntity? Find(params object[] primaryKeys);
     TEntity? Find(Expression<Func<TEntity, bool>> predicate);
     bool Exists(Expression<Func<TEntity, bool>> predicate);
-    IEnumerable<TEntity> Get(params Expression<Func<TEntity, bool>>[] includes);
+    IEnumerable<TEntity> Get(params Expression<Func<TEntity, object>>[] includes);
     IEnumerable<TEntity> GetByFilter(Expression<Func<TEntity, bool>> filter);
     IEnumerable<TEntity> GetByOrder(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy);
   }
