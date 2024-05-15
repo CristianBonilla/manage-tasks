@@ -12,8 +12,6 @@ services:
       dockerfile: ManageTasks.API/Dockerfile
     depends_on:
       - manage-tasks-db
-    links:
-      - manage-tasks-db
     networks:
       - manage-tasks-network
 
